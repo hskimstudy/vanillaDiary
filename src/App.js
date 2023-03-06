@@ -25,7 +25,7 @@ const reducer = (state, action) => {
       break;
     }
     case 'REMOVE': {
-      newState = state.fillter((it) => it.id !== action.targetId);
+      newState = state.filter((it) => it.id !== action.targetId);
       break
     }
     case 'EDIT': {
@@ -47,31 +47,31 @@ const dummyData = [
   {
     id: 1,
     emotion: 1,
-    content: "오늘의 일기 1번",
+    content: "오늘의 일기 1번," + " " + "감정점수: ",
     date: 1678018028233,
   },
   {
     id: 2,
     emotion: 2,
-    content: "오늘의 일기 2번",
+    content: "오늘의 일기 2번," + " " + "감정점수: ",
     date: 1678018028234,
   },
   {
     id: 3,
     emotion: 3,
-    content: "오늘의 일기 3번",
+    content: "오늘의 일기 3번," + " " + "감정점수: ",
     date: 1678018028235
   },
   {
     id: 4,
     emotion: 4,
-    contentn: "오늘의 일기 4번",
+    content: "오늘의 일기 4번," + " " + "감정점수: ",
     date: 1678018028236
   },
   {
     id: 5,
     emotion: 5,
-    content: "오늘의 일기 5번",
+    content: "오늘의 일기 5번," + " " + "감정점수: ",
     date: 1678018028237
   }
 ];
