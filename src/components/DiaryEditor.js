@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import MyButton from './MyButton';
 import MyHeader from './MyHeader';
@@ -45,7 +45,10 @@ const getStringDate = (date) => {
 }
 
 const DiaryEditor = () => {
-  const [emotion, setEmotion] = useState(3)
+
+  const constRef = useRef();
+  const [content, setContent] = useState("");
+  const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
 
   const handleClickEmote = (emotion) => {
@@ -74,12 +77,24 @@ const DiaryEditor = () => {
         <div className='imput_box emotion_list_wrapper'>
           {emotionList.map((it) => (
             <EmotionItem key={it.emotion_id} {...it}
-              onClick={handleClickEmote} />
+              onClick={handleClickEmote}
+              isSelected={it.emotion_id === emotion} />
           ))}
         </div>
       </section>
-    </div >
+      <section>
+        <h4>
+          오늘의 일기
+        </h4>
+        <div className='input_box_text_wrapper'>
+          <textarea
+            placeholder='오늘은 어땠나요'
+            ref={constRef} value={content} onChange={(e) => setContent(e.target.value)} />
+        </div>
+      </section>
 
+
+    </div >
   )
 };
 
