@@ -9,14 +9,13 @@ import { emotionList } from '../util/emotion';
 
 
 const Diary = () => {
-
   const { id } = useParams();
   const diaryList = useContext(DiaryStateContext);
   const navigate = useNavigate();
   const [data, setData] = useState();
 
   useEffect(() => {
-    if (diaryList.length >= 2) {
+    if (diaryList.length >= 1) {
       const targetDiary = diaryList.find(
         (it) => parseInt(it.id) === parseInt(id)
       );
@@ -36,6 +35,7 @@ const Diary = () => {
   if (!data) {
     return <div className='DiaryPage'>"로딩 중입니다..."</div>
   } else {
+
 
     const curEmotionData = emotionList.find((it) => parseInt(it.emotion_id) === parseInt(data.emotion))
     console.log(curEmotionData);
