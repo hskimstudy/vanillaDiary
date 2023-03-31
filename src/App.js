@@ -29,7 +29,7 @@ const reducer = (state, action) => {
     }
     case 'EDIT': {
       newState = state.map((it) =>
-        it.id === action.data.Id ? { ...action.data } : it
+        it.id === action.data.id ? { ...action.data } : it
       );
       break;
     }
@@ -53,9 +53,13 @@ function App() {
     if (localData) {
       const diaryList = JSON.parse(localData).sort(
         (a, b) => parseInt(b.id) - parseInt(a.id))
-      dataId.current = parseInt(diaryList[0].id) + 1
 
-      dispatch({ type: "INIT", data: diaryList })
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1
+
+        dispatch({ type: "INIT", data: diaryList })
+      }
+
     }
   }, [])
 
